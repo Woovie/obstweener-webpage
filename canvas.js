@@ -23,16 +23,16 @@ function loadAPage(e) {
 	} else {
 		pageToLoad = 'home';
 	}
-	$('#body-content').load('/subpages/' + pageToLoad + '.hmtl');
+	$('#body-content').load('subpages/' + pages[pageToLoad].url);
 }
 
 $(document).ready(function() {
 	$('body').bootstrapMaterialDesign();
 	if (document.location.hash.length > 1) {
 		var pageToLoad = document.location.hash.substring(1);
-		document.getElementById('body-content').innerHTML = pageToLoad;
+		$('#body-content').load('subpages/' + pages[pageToLoad].url);
 	} else {
-		document.getElementById('body-content').innerHTML = 'home';
+		$('#body-content').load('subpages/' + pages['home'].url);
 	}
 	document.getElementById('navbar-brand').addEventListener('click', loadAPage);
 //Generate the navbar links
