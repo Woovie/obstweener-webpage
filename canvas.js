@@ -33,8 +33,7 @@ function loadAPage(e) {
 	$('#body-content').load('subpages/' + pages[pageToLoad].url);
 }
 
-$(document).ready(function() {
-	console.log('document ready');
+$(document).ready(function() {//Only fires on the webpage physically loading once, doesn't trigger on loadAPage()
 	$('body').bootstrapMaterialDesign();
 	//Check the current URI for a hash like '#word' and use that if it's there to load a page.
 	if (document.location.hash.length > 1) {
