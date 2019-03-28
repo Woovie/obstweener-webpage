@@ -1,6 +1,5 @@
 #canvasData {
 	width: 1280px;
-	height: 180px;
 }
 
 #obsScene {
@@ -13,4 +12,5 @@
 
 #listitems {
 	overflow-y: scroll;
+	height: 120px;
 }
