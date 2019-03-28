@@ -34,6 +34,7 @@ function loadAPage(e) {
 }
 
 $(document).ready(function() {
+	console.log('document ready');
 	$('body').bootstrapMaterialDesign();
 	//Check the current URI for a hash like '#word' and use that if it's there to load a page.
 	if (document.location.hash.length > 1) {
