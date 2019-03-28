@@ -1,5 +1,7 @@
 #canvasData {
 	width: 1280px;
+	overflow-y: scroll;
+	height: 180px;
 }
 
 #obsScene {
