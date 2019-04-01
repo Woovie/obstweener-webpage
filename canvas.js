@@ -20,6 +20,6 @@ var pages = {
 var application = new Vue({
 	el: '#body-content',
 	data: {
-		message: 'asuh'
+		message: 'asuh';
 	}
 });
