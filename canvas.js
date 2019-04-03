@@ -6,7 +6,7 @@ Canvas classes are based on code found here:
 https://github.com/simonsarris/Canvas-tutorials
 */
 var pages = {
-	home: {
+	_blank: {
 		title: "Home",
 		url: "home.html"
 	},
@@ -20,43 +20,15 @@ var pages = {
 	}
 };
 
-function loadAPage(e) {
-	var pageToLoad = '#home';
-	var clicked = e.target;
-	var href = clicked.getAttribute('href');
-	var pageToLoad = href;
-	if (pageToLoad.length > 1) {
-		pageToLoad = pageToLoad.substring(1);
-	} else {
-		pageToLoad = 'home';
-	}
-	$('#body-content').load('subpages/' + pages[pageToLoad].url);
+function loadPage() {
+	var pageToLoad = '_blank';
+	var uri = document.documentURI.split('/').pop();
+	if (uri.length > 0) { pageToLoad = uri };
+	$('#subpageContent').load('subpages/'+pages[pageToLoad].url);
 }
 
-$(document).ready(function() {//Only fires on the webpage physically loading once, doesn't trigger on loadAPage()
-	$('body').bootstrapMaterialDesign();
-	//Check the current URI for a hash like '#word' and use that if it's there to load a page.
-	if (document.location.hash.length > 1) {
-		var pageToLoad = document.location.hash.substring(1);
-		$('#body-content').load('subpages/' + pages[pageToLoad].url);
-	} else {
-		$('#body-content').load('subpages/' + pages['home'].url);
-	}
-	document.getElementById('navbar-brand').addEventListener('click', loadAPage);
-	//Generate the navbar links
-	var ul = document.getElementById('navbar-ul');
-	for (page in pages) {
-		var listitem = document.createElement('li');
-		listitem.className = 'nav-item';
-		var link = document.createElement('a');
-		link.className = 'nav-link';
-		link.href = '#' + page;
-		link.addEventListener('click', loadAPage);
-		var textnode = document.createTextNode(pages[page].title);
-		link.appendChild(textnode);
-		listitem.appendChild(link);
-		ul.appendChild(listitem);
-	}
+$(document).ready(function() {
+	loadPage();
 });
 
 //Canvas should have a border for mouse precision
